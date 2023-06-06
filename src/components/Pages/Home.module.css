@@ -3,6 +3,9 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 250ms ease;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
 }
 .List {
   display: flex;

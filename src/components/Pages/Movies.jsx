@@ -50,9 +50,12 @@ export const Movies = () => {
       <ul className={s.List}>
         {searchResults.map(movie => (
           <li key={movie.id}>
-            <a className={s.link} onClick={() => handleMovieClick(movie.id)}>
+            <button
+              className={s.link}
+              onClick={() => handleMovieClick(movie.id)}
+            >
               {movie.title}
-            </a>
+            </button>
           </li>
         ))}
       </ul>

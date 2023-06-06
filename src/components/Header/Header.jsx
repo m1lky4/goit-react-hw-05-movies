@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import s from './Header.module.css';
 export const Header = () => {
