@@ -19,6 +19,7 @@ export const Home = () => {
 
   return (
     <>
+      <h1>Trending movies this week</h1>
       <ul className={s.List}>
         {movies.map(el => (
           <li key={el.id} className={s.Item}>
