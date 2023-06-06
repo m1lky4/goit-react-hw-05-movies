@@ -1,0 +1,57 @@
+.goBack {
+  display: block;
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  cursor: pointer;
+  padding: 5px;
+}
+.goBack:hover {
+  background-color: gainsboro;
+}
+.detailsWrapper {
+  display: flex;
+  gap: 70px;
+}
+.genres {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  padding: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+.personImg {
+  width: 120px;
+}
+.castList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.castListItem {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.informationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link {
+  color: blue;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: all 250ms ease;
+}
+
+.link:hover,
+.link:focus {
+  color: orange;
+  text-decoration: underline;
+}
+.author {
+  font-size: 18px;
+  font-weight: 600;
+}
