@@ -32,9 +32,11 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   useEffect(() => {
-    setPath(location.state.from);
-    setSearch(location.state.search);
-  }, []);
+    if (search === null && path === null) {
+      setPath(location.state.from);
+      setSearch(location.state.search);
+    }
+  }, [location.state.from, location.state.search]);
   const handleShowReviews = async () => {
     try {
       const movieReviews = await getMovieReviews(movieId);
