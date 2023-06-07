@@ -36,7 +36,7 @@ export const MovieDetails = () => {
       setPath(location.state.from);
       setSearch(location.state.search);
     }
-  }, [location.state.from, location.state.search]);
+  }, [location.state.from, location.state.search, path, search]);
   const handleShowReviews = async () => {
     try {
       const movieReviews = await getMovieReviews(movieId);
