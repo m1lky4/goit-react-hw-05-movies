@@ -17,7 +17,8 @@ export const MovieDetails = () => {
   const [showReviews, setShowReviews] = useState(false);
   const [showCast, setShowCast] = useState(false);
   const [showLayout, setShowLayout] = useState(true);
-
+  const [path, setPath] = useState(null);
+  const [search, setSearch] = useState(null);
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -27,17 +28,13 @@ export const MovieDetails = () => {
         console.log(error);
       }
     };
-    if (location.pathname === `/movies/${movieId}`) {
-      setShowReviews(false);
-      setShowCast(false);
-    }
-    if (location.pathname === `/movies/${movieId}`) {
-      setShowCast(false);
-      setShowReviews(false);
-    }
     fetchMovieDetails();
-  }, [movieId, location]);
+  }, [movieId]);
 
+  useEffect(() => {
+    setPath(location.state.from);
+    setSearch(location.state.search);
+  }, []);
   const handleShowReviews = async () => {
     try {
       const movieReviews = await getMovieReviews(movieId);
@@ -61,17 +58,15 @@ export const MovieDetails = () => {
       console.log(error);
     }
   };
+
   const handleGoBack = () => {
-    if (showReviews) {
-      setShowReviews(false);
-      setShowCast(true);
-    } else if (showCast) {
-      setShowCast(false);
-      setShowReviews(true);
+    if (search !== null) {
+      navigate(path + search);
+    } else {
+      navigate(path);
     }
-    setShowLayout(true);
-    navigate(-1);
   };
+
   if (!showLayout) {
     return null;
   }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { searchMovies } from '../API/getMovies';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import s from './Home.module.css';
 export const Movies = () => {
   const location = useLocation();
@@ -28,11 +29,6 @@ export const Movies = () => {
     e.preventDefault();
     navigate(`/movies?query=${searchQuery}`);
   };
-
-  const handleMovieClick = movieId => {
-    navigate(`/movies/${movieId}`);
-  };
-
   return (
     <div>
       <form onSubmit={handleSearchSubmit}>
@@ -50,12 +46,16 @@ export const Movies = () => {
       <ul className={s.List}>
         {searchResults.map(movie => (
           <li key={movie.id}>
-            <button
+            <Link
+              state={{
+                from: location.pathname,
+                search: location.search,
+              }}
               className={s.link}
-              onClick={() => handleMovieClick(movie.id)}
+              to={`/movies/${movie.id}`}
             >
               {movie.title}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

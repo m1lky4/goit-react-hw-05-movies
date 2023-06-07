@@ -1,10 +1,12 @@
 import { getTrendingMovies } from 'components/API/getMovies';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import s from './Home.module.css';
+
 export const Home = () => {
   const [movies, setMovies] = useState([]);
-
+  const location = useLocation();
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -16,14 +18,20 @@ export const Home = () => {
     };
     fetchMovies();
   }, []);
-
   return (
     <>
       <h1>Trending movies this week</h1>
       <ul className={s.List}>
         {movies.map(el => (
           <li key={el.id} className={s.Item}>
-            <Link className={s.link} to={`/movies/${el.id}`}>
+            <Link
+              state={{
+                from: location.pathname,
+                search: null,
+              }}
+              className={s.link}
+              to={`/movies/${el.id}`}
+            >
               {el.title || el.name}
             </Link>
           </li>
