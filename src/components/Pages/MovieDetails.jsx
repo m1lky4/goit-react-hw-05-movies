@@ -19,6 +19,10 @@ export const MovieDetails = () => {
   const [showLayout, setShowLayout] = useState(true);
   const [path, setPath] = useState(null);
   const [search, setSearch] = useState(null);
+  if (path === null && search === null) {
+    setPath(location.state.from);
+    setSearch(location.state.search);
+  }
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -30,11 +34,6 @@ export const MovieDetails = () => {
     };
     fetchMovieDetails();
   }, [movieId]);
-
-  useEffect(() => {
-    setPath(location.state?.from);
-    setSearch(location.state?.search);
-  }, []);
   const handleShowReviews = async () => {
     try {
       const movieReviews = await getMovieReviews(movieId);
